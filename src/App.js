@@ -11,6 +11,8 @@ import Registration from './pages/Registration/Registration';
 import Purchase from './pages/Purchase/Purchase';
 import RequireAuth from './shared/RequireAuth';
 import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -19,13 +21,14 @@ function App() {
        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="purchase" element={<RequireAuth><Purchase /></RequireAuth>} />
+        <Route path="purchase/:id" element={<RequireAuth><Purchase /></RequireAuth>} />
         <Route path="add-product" element={<RequireAuth><AddProduct /></RequireAuth>} />
         <Route path="login" element={<Login />} />
         <Route path="registration" element={<Registration />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

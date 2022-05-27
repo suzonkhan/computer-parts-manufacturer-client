@@ -33,6 +33,9 @@ const Header = () => {
             <Link className="nav-link" to="/add-product"> 
             AddProduct 
             </Link>
+            <Link className="nav-link" to="/my-profile"> 
+            Profile 
+            </Link>
           </Nav>
           {user ? (
             <Button onClick={()=>signOut(auth)} variant="outline-light">Hi,{user.displayName} Logout</Button>

@@ -12,6 +12,7 @@ import auth from "../../firebase.init";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../shared/Loading";
 const Login = () => {
+  const axios = require("axios").default;
   let navigate = useNavigate();
   let location = useLocation();
   const [signInWithGoogle] = useSignInWithGoogle(auth);
@@ -42,8 +43,8 @@ const Login = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  if (user) {
-    navigate(from, { replace: true });
+  if (user) {   
+    navigate(from, { replace: true }); 
   }
   return (
     <div className="page-block h-100">

@@ -9,8 +9,12 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../Hooks/useToken";
+import Loading from "../../shared/Loading";
 
 const Registration = () => {
+  let navigate = useNavigate();
+  let location = useLocation();
   const {
     register,
     handleSubmit,
@@ -21,6 +25,8 @@ const Registration = () => {
     useCreateUserWithEmailAndPassword(auth);
 
   const [updateProfile] = useUpdateProfile(auth);
+
+  let from = location.state?.from?.pathname || "/";
   const onSubmit = async (data) => {
     const displayName = data.displayName;
     const email = data.email;
@@ -28,6 +34,7 @@ const Registration = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
   };
+  const [token] = useToken(user);
   if (error) {
     return (
       <div>
@@ -36,9 +43,13 @@ const Registration = () => {
     );
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading></Loading>;
   }
   if (user) {
+  }
+
+  if (token) {
+    navigate(from, { replace: true });
   }
   return (
     <div className="page-block h-100">
@@ -50,11 +61,11 @@ const Registration = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Name</Form.Label>
-                 
+
                   <input
-                  className="form-control"
+                    className="form-control"
                     {...register("displayName", {
-                      required: 'Please enter you name.'
+                      required: "Please enter you name.",
                     })}
                   />
                   <Form.Text className="text-danger">
@@ -67,10 +78,10 @@ const Registration = () => {
                   <input
                     className="form-control"
                     {...register("email", {
-                      required: 'Please enter you email.'
+                      required: "Please enter you email.",
                     })}
                   />
-                   <Form.Text className="text-danger">
+                  <Form.Text className="text-danger">
                     {errors.email?.message}
                   </Form.Text>
                 </Form.Group>
@@ -80,10 +91,10 @@ const Registration = () => {
                     type="password"
                     className="form-control"
                     {...register("password", {
-                      required: 'Please enter you password.'
+                      required: "Please enter you password.",
                     })}
                   />
-                   <Form.Text className="text-danger">
+                  <Form.Text className="text-danger">
                     {errors.password?.message}
                   </Form.Text>
                 </Form.Group>

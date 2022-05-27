@@ -27,7 +27,7 @@ const Product = ({product}) => {
                 </div>
                 <div className="text-center">
                   {/* <Button variant="info">Manage Stock</Button> */}
-                  <Link className='btn btn-info' to={`/purchase/${_id}`}>Purchase</Link>
+                  <Link className='btn btn-outline-primary' to={`/purchase/${_id}`}>Purchase</Link>
                 </div>
               </div>
             </div>

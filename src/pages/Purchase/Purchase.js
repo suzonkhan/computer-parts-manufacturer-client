@@ -50,8 +50,7 @@ const Purchase = () => {
 }
   useEffect(() => {
     axios.get(`http://localhost:5000/product/${id}`).then(function (response) {
-      setProduct(response.data);
-     
+      setProduct(response.data); 
     });
   }, []);
   const {

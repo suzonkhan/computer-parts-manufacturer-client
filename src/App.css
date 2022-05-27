@@ -1,3 +1,6 @@
+body{
+  background-color: #f5f5f5 !important;
+}
 .page-block{
   padding: 80px 0;
   min-height: 600px;
@@ -7,6 +10,35 @@
 }
 .block-section{
   padding: 50px 0;
+}
+.product-box{
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.product-img{
+  text-align: center;
+}
+.product-box img{
+  max-height: 200px;
+}
+.product-box h3{
+  margin: 25px 0 10px;
+  font-size: 1.4rem;
+  line-height: 160%;
+}
+.review-box{
+  background-color: #fff;
+  padding: 25px 20px 20px 90px;
+  position: relative;
+  margin-bottom: 30px;
+}
+.review-box .faQuoteLeft{
+  position: absolute;
+  font-size: 55px;
+  left: 25px;
+  color: #dfdfdf;
+  top: 6px;
 }
 img{
   max-width: 100%;

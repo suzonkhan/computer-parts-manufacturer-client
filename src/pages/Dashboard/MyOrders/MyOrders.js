@@ -55,7 +55,7 @@ const MyOrders = () => {
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
         axios
@@ -63,13 +63,10 @@ const MyOrders = () => {
             `https://gigabite-manufacturer.herokuapp.com/order/delete/${orderID}`
           )
           .then(function (response) {
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            Swal.fire("Cancel!", "Your order has been cancel.", "success");
           });
-       
       }
     });
-
-
   };
   return (
     <div>
@@ -112,23 +109,26 @@ const MyOrders = () => {
                       </p>
                     </td>
                     <td>
+                    <Link className="btn btn-primary" disabled={order?.payment} to={`/dashboard/payment/${order._id}`}>
+                    {order?.payment ? "Paid" : "Pay Now"}
+                    </Link>
+                      {/* <Button
+                        className="m-2"
+                        variant="primary"
+                        onClick={() => handlePayment(order._id)}
+                        disabled={order?.payment}
+                      >
+                        {order?.payment ? "Paid" : "Pay Now"}
+                      </Button> */}
                       {!order?.payment && (
                         <Button
                           className="m-2"
-                          variant="primary"
-                          onClick={() => handlePayment(order._id)}
+                          variant="danger"
+                          onClick={() => handleDeleteOrder(order._id)}
                         >
-                          Pay Now
+                          Cancel
                         </Button>
                       )}
-
-                      <Button
-                        className="m-2"
-                        variant="danger"
-                        onClick={() => handleDeleteOrder(order._id)}
-                      >
-                        Cancel
-                      </Button>
                     </td>
                   </tr>
                 ))}

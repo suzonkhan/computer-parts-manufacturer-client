@@ -14,7 +14,7 @@ const useToken = user =>{
               }
               console.log(user);
               axios
-              .put(`http://localhost:5000/user/${email}`, userData)
+              .put(`https://gigabite-manufacturer.herokuapp.com/user/${email}`, userData)
               .then(function (response) { 
                 console.log(response);
                 const accessToken = response.data.token;

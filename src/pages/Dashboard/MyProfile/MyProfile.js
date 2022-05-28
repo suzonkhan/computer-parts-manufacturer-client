@@ -18,7 +18,7 @@ const MyProfile = () => {
     } = useForm();
 
     useEffect(()=>{
-      axios.get(`http://localhost:5000/user/${user.email}`).then(function (response) {
+      axios.get(`https://gigabite-manufacturer.herokuapp.com/user/${user.email}`).then(function (response) {
         setDbUser(response.data);  
       });
       console.log(dbUser);
@@ -27,7 +27,7 @@ const MyProfile = () => {
 
       const onSubmit = async  (userInfo) => {   
         axios
-        .put(`http://localhost:5000/user/update/${user.email}`, userInfo)
+        .put(`https://gigabite-manufacturer.herokuapp.com/user/update/${user.email}`, userInfo)
         .then(function (response) { 
           console.log(response); 
           toast("User info updated successfully!");

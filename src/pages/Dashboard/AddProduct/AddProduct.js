@@ -14,7 +14,7 @@ const AddProduct = () => {
   const onSubmit = (data, event) => {
   
     axios
-      .post("http://localhost:5000/product", data)
+      .post("https://gigabite-manufacturer.herokuapp.com/product", data)
       .then(function (response) {
         // console.log(response);
         toast("Product added successfully!");

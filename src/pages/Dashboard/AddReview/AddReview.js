@@ -28,7 +28,7 @@ const AddReview = () => {
     };
     console.log(customerReview);
     axios
-      .post("http://localhost:5000/review", customerReview)
+      .post("https://gigabite-manufacturer.herokuapp.com/review", customerReview)
       .then(function (response) {
         // console.log(response);
         toast("Review added successfully!");

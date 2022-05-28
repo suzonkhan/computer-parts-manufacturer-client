@@ -49,7 +49,7 @@ const Purchase = () => {
     }
 }
   useEffect(() => {
-    axios.get(`http://localhost:5000/product/${id}`).then(function (response) {
+    axios.get(`https://gigabite-manufacturer.herokuapp.com/product/${id}`).then(function (response) {
       setProduct(response.data); 
     });
   }, []);
@@ -71,7 +71,7 @@ const Purchase = () => {
         productPhoto,  
     }
     console.log(orderSummary);
-    axios.post('http://localhost:5000/order', orderSummary)
+    axios.post('https://gigabite-manufacturer.herokuapp.com/order', orderSummary)
     .then(function (response) {
       // console.log(response);
       toast("Order Places successfully!");

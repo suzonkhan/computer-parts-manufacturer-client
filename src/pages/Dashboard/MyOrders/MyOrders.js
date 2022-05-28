@@ -12,7 +12,7 @@ const MyOrders = () => {
   const { displayName, email } = user;
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/orders?email=${email}`, {
+      .get(`https://gigabite-manufacturer.herokuapp.com/orders?email=${email}`, {
         // headers: {
         //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         // },
@@ -31,7 +31,7 @@ const MyOrders = () => {
           payment: true
       }
       axios
-      .put(`http://localhost:5000/order/payment/${orderID}`, paymentInfo)
+      .put(`https://gigabite-manufacturer.herokuapp.com/order/payment/${orderID}`, paymentInfo)
       .then(function (response) { 
         toast("Payment added successfully!"); 
       })
@@ -41,7 +41,7 @@ const MyOrders = () => {
   }
   const handleDeleteOrder = (orderID) => {
     axios
-    .delete(`http://localhost:5000/order/delete/${orderID}`)
+    .delete(`https://gigabite-manufacturer.herokuapp.com/order/delete/${orderID}`)
     .then(function (response) { 
       toast("Deleted added successfully!"); 
     })

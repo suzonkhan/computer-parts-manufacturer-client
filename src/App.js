@@ -18,6 +18,8 @@ import MyProfile from './pages/Dashboard/MyProfile/MyProfile';
 import AddReview from './pages/Dashboard/AddReview/AddReview';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Payment from './pages/Dashboard/Payment/Payment';
+import Blogs from './pages/Blogs/Blogs';
+import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
       <Header></Header>
        <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="blog" element={<Blogs />} /> 
+        <Route path="portfolio" element={<MyPortfolio />} />
         <Route path="about" element={<About />} />
         <Route path="purchase/:id" element={<RequireAuth><Purchase /></RequireAuth>} />
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>}>

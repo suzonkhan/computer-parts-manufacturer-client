@@ -21,14 +21,21 @@ const Header = () => {
             <Link className="nav-link" to="/">
               Home
             </Link>
-             
-            <Link className="nav-link" to="/dashboard"> 
-            Dashboard 
+            <Link className="nav-link" to="/blog">
+              Blog
             </Link>
-           
+            <Link className="nav-link" to="/portfolio">
+              My Portfolio
+            </Link>
+
+            <Link className="nav-link" to="/dashboard">
+              Dashboard
+            </Link>
           </Nav>
           {user ? (
-            <Button onClick={()=>signOut(auth)} variant="outline-light">Hi,{user.displayName} Logout</Button>
+            <Button onClick={() => signOut(auth)} variant="outline-light">
+              Hi,{user.displayName} Logout
+            </Button>
           ) : (
             <Link className="btn btn-outline-light" to="/login">
               Login

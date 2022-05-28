@@ -99,3 +99,17 @@ body {
 .store-location p{
   margin-bottom: 3px;
 }
+ul.skill-list {
+  margin: 0;
+  padding: 0;
+}
+ul.skill-list li {
+  list-style: none;
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid #ebebeb;
+  background-color: #ffffff;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  transition: 0.4s;
+}

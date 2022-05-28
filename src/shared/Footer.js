@@ -7,13 +7,13 @@ const Footer = () => {
     <footer className="bg-dark text-light" variant="dark">
       <Container>
         <Row className="py-5">
-          <Col>
+          <Col xs={12} sm={6} md={3}>
             <div className="widget">
               <h4>Gigabite</h4>
               <p>Computer parts manufacturer</p>
             </div>
           </Col>
-          <Col>
+          <Col xs={12} sm={6} md={3}>
           <div className="widget">
               <h4>Customer Dashboard</h4>
              <ul>

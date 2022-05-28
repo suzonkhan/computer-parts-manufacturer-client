@@ -115,10 +115,10 @@ const Home = () => {
       <section className="block-section bg-white">
         <Container>
           <Row>
-            <Col>
+            <Col  xs={12} sm={12} md={6}>
               <img src={partnerBanner} alt="" />
             </Col>
-            <Col>
+            <Col  xs={12} sm={12} md={6}>
               <div className="section-heading text-start">
                 <h2>Become a Partner</h2>
                 <p>Change your life with Gigabite</p>
@@ -152,7 +152,7 @@ const Home = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col  xs={12} sm={12} md={6}>
               <div className="store-location">
                 <div>
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
@@ -184,7 +184,7 @@ const Home = () => {
                 </div>
               </div>
             </Col>
-            <Col>
+            <Col  xs={12} sm={12} md={6}>
               <img src={locationBanner} alt="" />
             </Col>
           </Row>

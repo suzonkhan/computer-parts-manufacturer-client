@@ -39,7 +39,7 @@ const AddReview = () => {
       });
   };
   return (
-    <div className="page-block">
+    <div>
       <Container>
         <Row>
           <Col>

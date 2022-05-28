@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MyOrders from './pages/Dashboard/MyOrders/MyOrders';
 import MyProfile from './pages/Dashboard/MyProfile/MyProfile';
 import AddReview from './pages/Dashboard/AddReview/AddReview';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -25,10 +26,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="purchase/:id" element={<RequireAuth><Purchase /></RequireAuth>} />
-        <Route path="my-orders" element={<RequireAuth><MyOrders /></RequireAuth>} />
-        <Route path="add-product" element={<RequireAuth><AddProduct /></RequireAuth>} />
-        <Route path="my-profile" element={<RequireAuth><MyProfile /></RequireAuth>} />
-        <Route path="add-review" element={<RequireAuth><AddReview /></RequireAuth>} />
+        <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>}>
+          <Route path="my-orders" element={<RequireAuth><MyOrders /></RequireAuth>} />
+          <Route path="add-product" element={<RequireAuth><AddProduct /></RequireAuth>} />
+          <Route index element={<RequireAuth><MyProfile /></RequireAuth>} />
+          <Route path="add-review" element={<RequireAuth><AddReview /></RequireAuth>} />
+        </Route> 
         <Route path="login" element={<Login />} />
         <Route path="registration" element={<Registration />} />
         <Route path="*" element={<NotFound />} />

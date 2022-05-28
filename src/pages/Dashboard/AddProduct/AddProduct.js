@@ -25,7 +25,7 @@ const AddProduct = () => {
       });
   };
   return (
-    <div className="page-block h-100 d-flex">
+    <div>
       <Container>
         <Row>
           <Col>

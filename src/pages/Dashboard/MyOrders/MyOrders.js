@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import "./MyOrders.css";
+import Swal from "sweetalert2";
+
 const MyOrders = () => {
   const axios = require("axios").default;
   const [orders, setOrders] = useState([]);
@@ -12,11 +14,14 @@ const MyOrders = () => {
   const { displayName, email } = user;
   useEffect(() => {
     axios
-      .get(`https://gigabite-manufacturer.herokuapp.com/orders?email=${email}`, {
-        // headers: {
-        //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        // },
-      })
+      .get(
+        `https://gigabite-manufacturer.herokuapp.com/orders?email=${email}`,
+        {
+          // headers: {
+          //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          // },
+        }
+      )
 
       .then(function (response) {
         setOrders(response.data);
@@ -26,29 +31,46 @@ const MyOrders = () => {
         console.log(error);
       });
   }, []);
-  const handlePayment = (orderID) => {  
-      const paymentInfo = {
-          payment: true
-      }
-      axios
-      .put(`https://gigabite-manufacturer.herokuapp.com/order/payment/${orderID}`, paymentInfo)
-      .then(function (response) { 
-        toast("Payment added successfully!"); 
+  const handlePayment = (orderID) => {
+    const paymentInfo = {
+      payment: true,
+    };
+    axios
+      .put(
+        `https://gigabite-manufacturer.herokuapp.com/order/payment/${orderID}`,
+        paymentInfo
+      )
+      .then(function (response) {
+        toast("Payment added successfully!");
       })
       .catch(function (error) {
         console.log(error);
-      }); 
-  }
-  const handleDeleteOrder = (orderID) => {
-    axios
-    .delete(`https://gigabite-manufacturer.herokuapp.com/order/delete/${orderID}`)
-    .then(function (response) { 
-      toast("Deleted added successfully!"); 
-    })
-    .catch(function (error) {
-      console.log(error);
-    }); 
-  }
+      });
+  };
+  const handleDeleteOrder = async (orderID) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(
+            `https://gigabite-manufacturer.herokuapp.com/order/delete/${orderID}`
+          )
+          .then(function (response) {
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          });
+       
+      }
+    });
+
+
+  };
   return (
     <div>
       <Container>
@@ -83,22 +105,29 @@ const MyOrders = () => {
                     </td>
                     <td>
                       <p>Order Qty: {order.orderQuantity}</p>
-                      <p>Total Price: { parseInt(order.orderQuantity) * parseInt(order.productPrice)}</p>
+                      <p>
+                        Total Price:{" "}
+                        {parseInt(order.orderQuantity) *
+                          parseInt(order.productPrice)}
+                      </p>
                     </td>
                     <td>
-                      {!order?.payment &&   <Button className="m-2"
-                        variant="primary"
-                        onClick={() => handlePayment(order._id)}
-                      >
-                        Pay Now 
-                      </Button>}
-                   
+                      {!order?.payment && (
+                        <Button
+                          className="m-2"
+                          variant="primary"
+                          onClick={() => handlePayment(order._id)}
+                        >
+                          Pay Now
+                        </Button>
+                      )}
 
-                      <Button className="m-2"
+                      <Button
+                        className="m-2"
                         variant="danger"
                         onClick={() => handleDeleteOrder(order._id)}
                       >
-                        Cancel 
+                        Cancel
                       </Button>
                     </td>
                   </tr>

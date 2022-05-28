@@ -66,7 +66,7 @@ const AddReview = () => {
                 />
               </Form.Group>
 
-              <input type="submit" />
+              <input className="btn btn-primary btn-lg w-100"  type="submit" />
             </form>
           </Col>
         </Row>

@@ -21,6 +21,9 @@ const Dashboard = () => {
               <Link className="nav-link" to="/dashboard/add-review">
                 Add Review
               </Link>
+              <Link className="nav-link" to="/dashboard/users">
+              Users
+              </Link>
             </div>
           </Col>
 

@@ -20,6 +20,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Payment from './pages/Dashboard/Payment/Payment';
 import Blogs from './pages/Blogs/Blogs';
 import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
+import Users from './pages/Dashboard/Users/Users';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="purchase/:id" element={<RequireAuth><Purchase /></RequireAuth>} />
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>}>
           <Route path="my-orders" element={<RequireAuth><MyOrders /></RequireAuth>} />
+          <Route path="users" element={<RequireAuth><Users /></RequireAuth>} />
           <Route path="payment/:id" element={<RequireAuth><Payment /></RequireAuth>} />
           <Route path="add-product" element={<RequireAuth><AddProduct /></RequireAuth>} />
           <Route index element={<RequireAuth><MyProfile /></RequireAuth>} />

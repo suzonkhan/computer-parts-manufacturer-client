@@ -11,14 +11,16 @@ import {
 import auth from "../../firebase.init";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../shared/Loading";
+import useToken from "../../Hooks/useToken";
 const Login = () => {
   const axios = require("axios").default;
   let navigate = useNavigate();
   let location = useLocation();
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, gUser] = useSignInWithGoogle(auth);
   const [user] = useAuthState(auth);
 
   let from = location.state?.from?.pathname || "/";
+  const [token] = useToken(gUser);
   const {
     register,
     handleSubmit,
@@ -79,7 +81,7 @@ const Login = () => {
               </form>
               <hr />
             or
-            <Button  onClick={() => signInWithGoogle()} variant="info" className='w-100'> Login With Google </Button>
+            <Button onClick={() => signInWithGoogle()} variant="info" className='w-100'> Login With Google </Button>
               <p className="my-3">
                 {" "}
                 Don't have account <Link to="/registration"> create now.</Link>

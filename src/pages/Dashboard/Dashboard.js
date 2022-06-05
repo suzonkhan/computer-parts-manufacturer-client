@@ -1,8 +1,13 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import auth from "../../firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   return (
     <div className="page-block">
       <Container>
@@ -14,16 +19,13 @@ const Dashboard = () => {
               </Link>
               <Link className="nav-link" to="/dashboard/my-orders">
                 My Orders
-              </Link>
-              <Link className="nav-link" to="/dashboard/add-product">
-                Add Product
               </Link> 
               <Link className="nav-link" to="/dashboard/add-review">
                 Add Review
               </Link>
-              <Link className="nav-link" to="/dashboard/users">
-              Users
-              </Link>
+              
+              { admin && <li><Link to="/dashboard/users">All Users</Link></li>}
+              { admin && <li><Link to="/dashboard/add-product">  Add Product</Link></li>}
             </div>
           </Col>
 

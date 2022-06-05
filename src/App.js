@@ -10,6 +10,7 @@ import Login from './pages/Login/Login';
 import Registration from './pages/Registration/Registration';
 import Purchase from './pages/Purchase/Purchase';
 import RequireAuth from './shared/RequireAuth';
+import RequireAdmin from './shared/RequireAdmin';
 import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,7 +37,7 @@ function App() {
           <Route path="my-orders" element={<RequireAuth><MyOrders /></RequireAuth>} />
           <Route path="users" element={<RequireAuth><Users /></RequireAuth>} />
           <Route path="payment/:id" element={<RequireAuth><Payment /></RequireAuth>} />
-          <Route path="add-product" element={<RequireAuth><AddProduct /></RequireAuth>} />
+          <Route path="add-product" element={<RequireAdmin><AddProduct /></RequireAdmin>} />
           <Route index element={<RequireAuth><MyProfile /></RequireAuth>} />
           <Route path="add-review" element={<RequireAuth><AddReview /></RequireAuth>} />
         </Route> 
